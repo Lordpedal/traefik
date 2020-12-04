@@ -1,6 +1,6 @@
 #!/bin/bash
 docker run -d \
-        --name traefik \
+        --name=Traefik \
         --network traefik \
         --restart always \
         -v /var/run/docker.sock:/var/run/docker.sock \
