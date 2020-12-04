@@ -1,6 +1,6 @@
 # Docker Traefik v1
 
-**Dependencias:** *sudo apt-get install apache2-utils*
+**Dependencias:** *sudo apt-get -y install apache2-utils*
 
 **Clave:** *htpasswd -nb lordpedal lordpedal*
 
