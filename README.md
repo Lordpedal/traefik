@@ -4,7 +4,7 @@
 
 **Generar clave cifrada:** *htpasswd -nb lordpedal lordpedal*
 
-**Permisos lectura certificados:** *chmod 600 acme.json*
+**Permisos lectura certificados:** *touch acme.json && chmod 600 acme.json*
 
 **Permisos ejecución bash:** *chmod +x traefik.sh*
 
