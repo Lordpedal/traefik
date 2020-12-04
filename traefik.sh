@@ -6,7 +6,7 @@ docker run -d \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v $PWD/lordpedal.toml:/traefik.toml \
         -v $PWD/acme.json:/acme.json \
-        -e DUCKDNS_TOKEN=c84c43be-b5c2-4d61-be19-fef923b46297 \
+        -e DUCKDNS_TOKEN=11111111-1111-1111-1111-111111111111 \
         -e "GODEBUG=tls13=1" \
         -p 80:80 \
         -p 443:443 \
