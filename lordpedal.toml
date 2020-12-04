@@ -1,0 +1,145 @@
+################################################################
+# Global configuration
+################################################################
+
+checkNewVersion = true
+InsecureSkipVerify = true
+debug = false
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+ [entryPoints.dashboard]
+  address = ":8080"
+        [entryPoints.dashboard.auth]
+         headerField = "X-WebAuth-User"
+                [entryPoints.dashboard.auth.basic]
+                        removeHeader = true
+                        users = ["lordpedal:$apr1$82PqDBA.$K0.eDtWn34hwreIuGn4QU0"]
+ [entryPoints.http]
+  address = ":80"
+  compress = true
+        [entryPoints.http.redirect]
+                entryPoint = "https"
+ [entryPoints.https]
+  address = ":443"
+        [entryPoints.https.tls]
+                minVersion = "VersionTLS12"
+                cipherSuites = [ "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
+                "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
+                "TLS_AES_256_GCM_SHA384",
+                "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+                "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+                "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
+                "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256" ]
+
+[api]
+entrypoint="dashboard"
+
+[acme]
+ email = "lordpedal@protonmail.com"
+ storage = "acme.json"
+ entryPoint = "https"
+ acmeLogging = true
+ onHostRule = true
+
+[acme.dnsChallenge]
+ provider = "duckdns"
+ delayBeforeCheck = 0
+
+[[acme.domains]]
+ main = "*.lordpedal.duckdns.org"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "lordpedal.duckdns.org"
+watch = true
+swarmmode = false
+network = "traefik"
+exposedByDefault = false
+
+[file]
+[backends]
+
+  [backends.backend-jellyfin]
+    [backends.backend-jellyfin.servers]
+      [backends.backend-jellyfin.servers.server-jellyfin-ext]
+        url = "http://192.168.1.90:8096"
+        weight = 0
+
+  [backends.backend-nextcloud]
+    [backends.backend-nextcloud.servers]
+     [backends.backend-nextcloud.servers.server-nextcloud-ext]
+        url = "https://192.168.1.90:9443"
+        weight = 0
+
+  [backends.backend-jitsi]
+    [backends.backend-jitsi.servers]
+     [backends.backend-jitsi.servers.server-jitsi-ext]
+        url = "https://192.168.1.90:8443"
+        weight = 0
+
+[frontends]
+
+  [frontends.frontend-jellyfin]
+    backend = "backend-jellyfin"
+    passHostHeader = true
+    [frontends.frontend-jellyfin.routes]
+          [frontends.frontend-jellyfin.routes.route-jellyfin-ext]
+                rule = "Host:jellyfin.lordpedal.duckdns.org"
+    [frontends.frontend-jellyfin.headers]
+      SSLRedirect = true
+      SSLHost = "jellyfin.lordpedal.duckdns.org"
+      SSLForceHost = true
+      STSSeconds = 315360000
+      STSIncludeSubdomains = true
+      STSPreload = true
+      forceSTSHeader = true
+      frameDeny = true
+      contentTypeNosniff = true
+      browserXSSFilter = true
+      customResponseHeaders = "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
+      customFrameOptionsValue = "allow-from https://lordpedal.duckdns.org"
+
+  [frontends.frontend-nextcloud]
+    backend = "backend-nextcloud"
+    passHostHeader = true
+    [frontends.frontend-nextcloud.routes]
+          [frontends.frontend-nextcloud.routes.route-nextcloud-ext]
+                rule = "Host:nextcloud.lordpedal.duckdns.org"
+    [frontends.frontend-nextcloud.headers]
+      SSLRedirect = true
+      SSLHost = "nextcloud.lordpedal.duckdns.org"
+      SSLForceHost = true
+      STSSeconds = 315360000
+      STSIncludeSubdomains = true
+      STSPreload = true
+      forceSTSHeader = true
+      frameDeny = true
+      contentTypeNosniff = true
+      browserXSSFilter = true
+      customResponseHeaders = "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
+      customFrameOptionsValue = "allow-from https://lordpedal.duckdns.org"
+
+  [frontends.frontend-jitsi]
+    backend = "backend-jitsi"
+    passHostHeader = true
+    [frontends.frontend-jitsi.routes]
+          [frontends.frontend-jitsi.routes.route-jitsi-ext]
+                rule = "Host:jitsi.lordpedal.duckdns.org"
+    [frontends.frontend-jitsi.headers]
+      SSLRedirect = true
+      SSLHost = "jitsi.lordpedal.duckdns.org"
+      SSLForceHost = true
+      STSSeconds = 315360000
+      STSIncludeSubdomains = true
+      STSPreload = true
+      forceSTSHeader = true
+      frameDeny = true
+      contentTypeNosniff = true
+      browserXSSFilter = true
+      customResponseHeaders = "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
+      customFrameOptionsValue = "allow-from https://lordpedal.duckdns.org"
