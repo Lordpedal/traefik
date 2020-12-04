@@ -4,4 +4,4 @@
 
 **Clave:** *htpasswd -nb lordpedal lordpedal*
 
-... la culminación de un fin es el comienzo de una realidad.
+## ... la culminación de un fin es el comienzo de una realidad.
