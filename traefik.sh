@@ -22,7 +22,7 @@ docker run -d \
         -l traefik.frontend.headers.browserXSSFilter=true \
         -l traefik.frontend.headers.contentTypeNosniff=true \
         -l traefik.frontend.headers.forceSTSHeader=true \
-        -l traefik.frontend.headers.STSSeconds=315360000 \
+        -l traefik.frontend.headers.STSSeconds=31536000 \
         -l traefik.frontend.headers.STSIncludeSubdomains=true \
         -l traefik.frontend.headers.STSPreload=true \
         -l traefik.frontend.headers.customResponseHeaders=X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex \
