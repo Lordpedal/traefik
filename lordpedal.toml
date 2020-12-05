@@ -102,7 +102,7 @@ exposedByDefault = false
       contentTypeNosniff = true
       browserXSSFilter = true
       customResponseHeaders = "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
-      customFrameOptionsValue = "allow-from https://lordpedal.duckdns.org"
+      customFrameOptionsValue = "allow-from https://jellyfin.lordpedal.duckdns.org"
 
   [frontends.frontend-nextcloud]
     backend = "backend-nextcloud"
@@ -122,7 +122,7 @@ exposedByDefault = false
       contentTypeNosniff = true
       browserXSSFilter = true
       customResponseHeaders = "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
-      customFrameOptionsValue = "allow-from https://lordpedal.duckdns.org"
+      customFrameOptionsValue = "allow-from https://nextcloud.lordpedal.duckdns.org"
 
   [frontends.frontend-jitsi]
     backend = "backend-jitsi"
@@ -142,4 +142,4 @@ exposedByDefault = false
       contentTypeNosniff = true
       browserXSSFilter = true
       customResponseHeaders = "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
-      customFrameOptionsValue = "allow-from https://lordpedal.duckdns.org"
+      customFrameOptionsValue = "allow-from https://jitsi.lordpedal.duckdns.org"
