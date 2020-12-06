@@ -4,6 +4,8 @@
 
 **Generar clave cifrada:** ``htpasswd -nb lordpedal lordpedal``
 
+**Crear red Traefik:** ``docker network create -d bridge traefik``
+
 **Permisos lectura certificados:** ``touch acme.json && chmod 600 acme.json``
 
 **Permisos ejecución bash:** ``chmod +x traefik.sh``
