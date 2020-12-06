@@ -1,4 +1,5 @@
 #!/bin/bash
+docker network create -d bridge traefik
 docker run -d \
         --name=Traefik \
         --network traefik \
