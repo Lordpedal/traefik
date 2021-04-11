@@ -1,6 +1,6 @@
 # docker Traefik v1.7x  - [Overclock Server](https://lordpedal.github.io)
 
-**Dependencias a instalar:** ``sudo apt-get -y install apache2-utils``
+**Dependencias necesarias:** ``sudo apt-get -y install apache2-utils``
 
 **Generar clave cifrada:** ``htpasswd -nb lordpedal lordpedal``
 
